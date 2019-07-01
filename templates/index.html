@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="bd">
+                <!--办公软件页面-->
+                <ul class="theme-popbod dform" style="display: block;padding: 20px;">
+                    <li>
+                        <div id="dv1">
+                            <table class="table" id="tbRecord">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>文件名称</th>
+                                    <th>备注</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for filename in names %}
+                                    <tr>
+                                        <td>{{ loop.index }}</td>
+                                        <td>{{ filename}}</td>
+                                        <td>{{ dct[filename] }}</td>
+                                        <td class="delete"><a href="{{ baseurl }}/{{ sub_root }}{{ dct_dict[filename] }}{{filename}}">下载</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+{% endblock %}

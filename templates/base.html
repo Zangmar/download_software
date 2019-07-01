@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>资源下载中心</title>
+    <link rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/Site.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/zy.all.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/font-awesome.min.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/amazeui.min.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/admin.css') }}"/>
+</head>
+
+<body>
+<div><h1>资源下载中心</h1></div>
+<div class="dvcontent">
+
+    <div>
+        <!--tab start-->
+        <div class="tabs">
+            <div class="hd">
+                <ul style="">
+                    {% for cn_name,en_name in dir_names %}
+                    <li {% if en_name == download_type %}class="on" {% endif %} style="box-sizing: initial;-webkit-box-sizing: initial;"><a href="{{ url_for("download") }}?download_type={{ en_name }}">{{ cn_name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% block content %}{% endblock %}
+            </div>
+        </div>
+</div>
+
+
+    <script src="{{ url_for('static',filename='js/jquery-1.7.2.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static',filename='js/plugs/Jqueryplugs.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static',filename='js/_layout.js') }}"></script>
+    <script>
+        var num = 1;
+        $(function () {
+
+            $(".tabs").slide({trigger: "click"});
+
+        });
+        {#var btn_edit = function (id) {#}
+        {#    $.jq_Panel({#}
+        {#        url: "/RawMaterialsType/EditRawMaterialsType?id=" + id,#}
+        {#        title: "编辑分类",#}
+        {#        dialogModal: true,#}
+        {#        iframeWidth: 500,#}
+        {#        iframeHeight: 400#}
+        {#    });#}
+
+    </script>
+</body>
+
+</html>
